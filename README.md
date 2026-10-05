@@ -13,9 +13,9 @@
 
 | STT | Họ và tên | Mã sinh viên (MSV/MHV) | Vai trò |
 |:---:|-----------|:----------------------:|---------|
-| 1 | **Phạm Thành Đạt** | `2A202602721` | Đội trưởng / Product Lead |
-| 2 | **Đinh Thị Minh Tâm** | `2A202602433` | Thành viên |
-| 3 | **Bùi Thị Ngọc Trân** | `2A202602529` | Thành viên |
+| 1 | **Phạm Thành Đạt** | `2A202602721` | Option B |
+| 2 | **Đinh Thị Minh Tâm** | `2A202602433` | Option A |
+| 3 | **Bùi Thị Ngọc Trân** | `2A202602529` | Option C |
 
 ---
 
