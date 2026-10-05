@@ -85,8 +85,7 @@ Nguồn chưa ghi First Action, điểm do dự, thao tác đọc nguồn/recove
 
 **Pattern/đối lập:** Nguồn ghi nhu cầu hỗ trợ ngắn, căn cứ rõ và đường kiểm soát. Quiz tạo sự an tâm cho Trí nhưng áp lực với Nam/Thảo. Đây là điểm cần hiểu nguyên nhân, không chỉ đếm phiếu chọn option.
 
-Bản đầy đủ: [group-feedback-synthesis.md](group-feedback-synthesis.md). Cần link hai Feedback Notes của đồng đội và ghi chép gốc để kiểm chứng các nhận định chung; chưa xác nhận Gate 5 chỉ từ bảng tổng hợp.
-
+Bản đầy đủ: [group-feedback-synthesis.md](group-feedback-synthesis.md). 
 ### Next Change của nhóm
 
 **Quyết định được ghi trong nguồn:** Tạo luồng kết hợp bắt đầu bằng checklist B; khi chọn concept, bổ sung đối chiếu cách hiểu từ C và đường yêu cầu trợ giảng nếu vẫn chưa hiểu. Đây là một hướng thay đổi luồng hỗ trợ của nhóm; nên xác định phạm vi nhỏ nhất và hành vi cần kiểm tra vòng sau. Đề xuất riêng trong phiếu cá nhân không thay thế quyết định này.
