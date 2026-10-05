@@ -1,147 +1,110 @@
-# Lab 18/19 — Prototype & Solution Exploration
+﻿# Lab 18/19 — Prototype & Solution Exploration
 
-## 1. Thông tin cá nhân và nhóm
+## 1. Thông tin cá nhân & Đội ngũ
 
 | Thông tin | Chi tiết |
-|-----------|----------|
-| **MHV** | 2A202602529 |
-| **Họ tên** | Bùi Thị Ngọc Trân |
+|---|---|
+| **Họ tên** | **Bùi Thị Ngọc Trân** |
+| **Mã học viên** | **2A202602529** |
 | **Tên nhóm** | **فتيات جميلات** |
-| **Case tiếp tục** | **Case A — AI Tutor: Diagnostic Refresher** |
+| **Case bài toán** | **Case A — AI Tutor: Diagnostic Refresher** |
 
-### Danh sách thành viên nhóm فتيات جميلات
+| Thành viên | MHV | Phân công trong tài liệu nhóm |
+|---|---|---|
+| Phạm Thành Đạt | 2A202602721 | Kiến trúc testbed, Option B; điều phối phiên 1 |
+| Đinh Thị Minh Tâm | 2A202602433 | Option C; điều phối phiên 2 |
+| Bùi Thị Ngọc Trân | 2A202602529 | Option A; điều phối phiên 3 |
 
-| STT | Họ và tên | Mã sinh viên (MSV/MHV) | Vai trò |
-|:---:|-----------|:----------------------:|---------|
-| 1 | **Phạm Thành Đạt** | `2A202602721` | Option B |
-| 2 | **Đinh Thị Minh Tâm** | `2A202602433` | Option A |
-| 3 | **Bùi Thị Ngọc Trân** | `2A202602529` | Option C |
+## 2. Hypothesis Problem
 
----
+### Phát biểu theo năm thành tố
 
-## 2. Bốn Artifacts từ Day 17 (Đặt cạnh nhau trước khi bắt đầu)
+> Khi **đang học hoặc làm bài tập kỹ thuật AI tổng hợp như LangChain RAG Indexing**, **học viên non-tech và chuyển ngành** gặp trở ngại trong việc **xác định và bổ sung kiến thức nền để tiếp tục bài học**, bởi vì **khó tự xác định khái niệm chưa hiểu và phải tìm nội dung giải thích phù hợp từ nhiều nguồn**, dẫn đến **mất thời gian tra cứu, hỏi người khác và thực hành lặp lại, làm gián đoạn tiến trình học**.
 
-> **Nguyên tắc cốt lõi:** Nhóm tiếp tục đúng Case A từ Day 17. Practice interview Day 17 chưa đủ để chứng minh pain đã được validated. Day này chuyển sang thử nghiệm các cách giải bằng prototype mà không pitch hay tuyên bố *"User đã xác nhận solution này đúng"*.
+| Thành tố | Nội dung |
+|---|---|
+| Situation | Đang học/làm bài kỹ thuật AI tổng hợp |
+| User | Học viên non-tech/chuyển ngành |
+| Job | Xác định, bổ sung kiến thức nền và tiếp tục bài |
+| Barrier | Khó tự xác định khái niệm chưa hiểu, tìm nội dung phù hợp |
+| Consequence | Tốn thời gian/công sức, gián đoạn học; chưa có số đo định lượng |
 
-```
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│ 1. HYPOTHESIS PROBLEM (DAY 17)                                                         │
-│ Học viên thường xuyên bị vướng mắc và bỏ dở bài học khi gặp các khái niệm nâng cao vì │
-│ họ thiếu khả năng tự chẩn đoán chính xác lỗ hổng kiến thức nền của mình và không có    │
-│ giải pháp ôn tập bổ trợ ngắn gọn, tức thì ngay tại luồng học.                          │
-├────────────────────────────────────────────────────────────────────────────────────────┤
-│ 2. BA PRACTICE NOTES (DAY 17)                                                          │
-│ • Note 1 (Trân phỏng vấn bạn Linh - 22t, Marketing): Gặp khó khăn về công nghệ,        │
-│   syntax, thuật toán LLM; tự mày mò hỏi quanh, đọc tài liệu, và nhờ AI Agent tạo       │
-│   checklist phân rã từng bước thực thi trong code để hiểu bản chất.                    │
-│ • Note 2 (Đạt phỏng vấn anh Khánh - 25t, BA): Domain mới mờ nhạt; tự đọc tài liệu cũ, │
-│   dùng AI nắm khung tổng quan, lập danh sách Q&A, chuẩn bị phương án A/B để chốt spec. │
-│ • Note 3 (Tâm phỏng vấn bạn Thương - 23t, BA): Slide bài học hiểu nhưng không sâu;     │
-│   khi gặp khó khăn thì nhắn tin/email ghi rõ vướng ở điểm A/B kèm đề xuất giải pháp.   │
-├────────────────────────────────────────────────────────────────────────────────────────┤
-│ 3. SOLUTION PARKING LOT (TỐI THIỂU 5 HƯỚNG TỪ DAY 17)                                  │
-│ 1. Nút "Tôi vẫn chưa hiểu": AI Tutor đặt 2–3 câu chẩn đoán, chọn kiến thức nền, tạo     │
-│    refresher ngắn và đưa trở về bài học (Solution chính của Case A).                   │
-│ 2. Diagnostic Quiz ngắn bắt buộc trước mỗi chương mới để phát hiện lỗ hổng sớm.        │
-│ 3. Cây phân rã kiến thức nền (Knowledge Checklist): bóc tách bài học thành các mắt xích│
-│    prerequisite để người học tự tick chọn và xem giải thích tức thì.                   │
-│ 4. Đối chiếu tương phản A/B & Escalation Trợ giảng: AI đưa ra 2 cách hiểu A vs B để     │
-│    nhận diện ngộ nhận; nếu vẫn nghẽn thì tự tạo brief gửi Mentor hỗ trợ 1-1.           │
-│ 5. AI Chatbot giải thích đa cấp độ (ELI5 / non-tech) + checklist hành động.            │
-├────────────────────────────────────────────────────────────────────────────────────────┤
-│ 4. CONVERSATION GUIDE CUỐI (DAY 17)                                                    │
-│ Bộ câu hỏi Big 3 neo vào "lần gần nhất", probe bank đào sâu hành vi – workaround –     │
-│ hậu quả, và 3 phản xạ Deflect / Anchor / Dig để tránh bẫy phỏng vấn.                 │
-└────────────────────────────────────────────────────────────────────────────────────────┘
-```
+### Evidence nối tiếp Day17
 
----
+- **Evidence cá nhân — Linh, Marketing:** Dùng AI Agent tạo checklist để hiểu từng bước code làm gì và vì sao. Nguồn: [Practice Note Day17](../Track1_Day17_2A202602529_BuiThiNgocTran/interview/notes.md).
+- **Evidence được tài liệu nhóm tóm tắt:** Khánh phải xác nhận tài liệu AI thủ công; Khuê tìm tài liệu nền bên ngoài làm gián đoạn thực hành; Thương mất công điều chỉnh kết quả AI thiếu nhất quán. Cần gắn link notes gốc của đồng đội để truy vết các dữ kiện này.
+- **Counter-evidence:** Linh chủ động tìm cách tiếp tục học, không bỏ dở. Vì vậy giảm drop-out là tác động kỳ vọng, chưa phải kết luận được chứng minh.
 
-## 3. Chặng 1 — Tổng hợp evidence (Evidence Synthesis)
+**Unknown:** Cơ chế AI-led, user-led hay đối chiếu kết hợp trợ giảng phù hợp hơn? Ôn nhanh có chuyển thành năng lực giải bài độc lập lâu dài không?
 
-### 3.1. Evidence huddle (Đối chiếu 3 Practice Notes)
+## 3. Three Solution Options
 
-| Practice Note | User đã thực sự làm/nói gì? (Facts) | Điều nhóm đang diễn giải (Interpretations) |
-|---------------|-------------------------------------|--------------------------------------------|
-| **1. Bạn Linh (22t - Marketing)** *(Lượt của Trân)* | • **Nói:** *"Khó khăn lớn nhất chắc sẽ là về phần công nghệ... ngay cả việc tiếp cận công nghệ là nó cũng đã khác rồi... ẩn sau những quyết định đó có rất nhiều thuật toán..."*<br>• **Làm:** Hỏi liên tục mọi người xung quanh; đọc nhiều tài liệu; thực hành lặp lại nhiều lần; ra lệnh cho AI Agent: *"tạo cho tôi checklist để tôi đi qua từng cái hoạt động kiểu xem kỹ từng bước là nó làm như thế nào và nó làm để làm gì."* | Người học non-tech bị hổng kiến thức nền kỹ thuật, không hiểu bản chất thuật toán và code. Workaround dùng AI agent chia nhỏ checklist chứng minh nhu cầu **chẩn đoán và phân rã kiến thức từng bước nhỏ** để vượt qua điểm nghẽn. |
-| **2. Anh Khánh (25t - BA)** *(Lượt của Đạt)* | • **Nói:** *"Khó khăn nhất là khi làm việc với domain hoàn toàn mới... tài liệu đầu vào rất mờ nhạt... Nếu mình không hiểu đúng bản chất thì rất dễ truyền đạt sai cho dev..."*<br>• **Làm:** Tự đọc lại tài liệu cũ, dùng AI nắm khung tổng quan; lên danh sách câu hỏi Q&A chi tiết; chuẩn bị sẵn phương án A/B để hỏi lead/khách hàng chốt luồng. | Khi đối mặt với kiến thức/nghiệp vụ mới, người học/người làm cần một **"khung tổng quan" (mental model)** trước. Họ không thích hỏi chung chung mà chủ động thu hẹp phạm vi vướng mắc thành các lựa chọn cụ thể để được hỗ trợ tức thì. |
-| **3. Bạn Thương (23t - BA)** *(Lượt của Tâm)* | • **Nói:** *"Hiểu nhưng mà không sâu. Chỉ là biết thôi chứ không hiểu lắm."*<br>• **Làm:** Xác nhận lại yêu cầu qua tin nhắn/email có minh chứng; trình bày rõ: *"mình đang khó khăn ở việc A việc B và em cần giải pháp cho A và B... việc này gấp và ảnh hưởng tiến độ thế nào"* để người khác hỗ trợ ngay. | Trạng thái "hiểu nông / hiểu tạm thời" rất phổ biến. Khi gặp khó, user cần **xác định chính xác điểm nghẽn (A hay B)** thay vì học lại toàn bộ từ đầu, và họ cần sự hỗ trợ kịp thời để không bị đình trệ tiến độ. |
+### Bối cảnh và nhiệm vụ chung
 
----
+Cả ba phương án dùng cùng người học mục tiêu, Bài 4 xây dựng RAG Agent với LangChain, bước VectorStore Indexing và các khái niệm **Embedding Dimension & Cosine Similarity**. Nhiệm vụ: tìm hỗ trợ đúng kiến thức nền rồi quay lại bài. Hiểu trong dưới ba phút là mục tiêu thiết kế, chưa phải số đo đã xác nhận.
 
-### 3.2. Thảo luận nhanh nhóm (Quick Synthesis Questions)
-
-1. **Có situation, behavior hoặc workaround nào xuất hiện nhiều hơn một lần?**
-   - **Situation lặp lại:** Cả 3 người đều đối mặt với tình huống tiếp nhận khối lượng kiến thức mới hoàn toàn (Linh: AI/code; Khánh: domain mới; Thương: nghiệp vụ khó/slide bài học).
-   - **Workaround lặp lại:** Cả 3 đều không thụ động bỏ cuộc mà đều dùng **workaround chủ động**: tự tra cứu tài liệu cũ/mạng, dùng AI để tóm tắt/chia nhỏ vấn đề, và khi tìm kiếm sự trợ giúp từ con người (đồng nghiệp, mentor, sếp) thì đều cố gắng **cụ thể hóa điểm mình chưa hiểu** (Linh nhờ AI tạo checklist từng bước; Khánh chuẩn bị options A/B; Thương chỉ rõ vướng ở điểm A hay B).
-
-2. **Evidence nào mâu thuẫn hoặc làm nhóm bất ngờ?**
-   - **Bất ngờ:** Linh là dân non-tech (Marketing) nhưng không né tránh code mà lại biến AI thành công cụ tạo checklist giải thích code. Thay vì cần một người dạy kèm giải thích dài dòng, Linh cần một công cụ phân rã các bước thực thi để tự kiểm tra hiểu biết của mình.
-   - **Mâu thuẫn với giả định ban đầu:** Nhóm từng giả định học viên sẽ nản lòng và bỏ dở ngay khi gặp khó, nhưng thực tế các học viên có động lực cao sẽ tìm mọi workaround (hỏi người khác, dùng AI, lặp lại nhiều lần) trước khi bỏ cuộc; tuy nhiên cái giá phải trả là mất rất nhiều thời gian và năng lượng.
-
-3. **Điều gì vẫn chỉ là suy đoán của nhóm?**
-   - Nhóm vẫn đang **suy đoán** rằng: *"Việc chẩn đoán tự động bằng 2–3 câu hỏi trắc nghiệm ngắn sẽ giúp học viên nhận ra đúng lỗ hổng và quay lại bài học hiệu quả hơn việc họ tự dùng chatbot prompt tự do hoặc tự search"*. Chúng ta chưa có bằng chứng thực tế cho thấy một bài chẩn đoán ngắn có thực sự đánh trúng điểm họ quên hay gây thêm phiền toái/ngắt quãng mạch học.
-
-4. **Hypothesis Problem nào đủ cụ thể để nhóm dùng làm điểm xuất phát hôm nay?**
-   - Tập trung vào rào cản: **Người học bị tắc nghẽn ở khái niệm nâng cao do thiếu hụt kiến thức nền tảng và không biết chính xác mình đang hổng ở mắt xích nào**, dẫn đến việc phải mày mò thủ công mất nhiều thời gian hoặc học lan man.
-
----
-
-### 3.3. Chốt Hypothesis Problem
-
-> Cấu trúc chuẩn:  
-> **Khi [situation], [user] gặp khó khăn trong việc [job] vì [barrier], dẫn đến [consequence].**
-
-- **Hypothesis Problem nhóm tiếp tục:**
-  > **Khi đang học các bài học hoặc làm bài tập kỹ thuật có tính tổng hợp, học viên (đặc biệt là người chuyển ngành / non-tech) gặp khó khăn trong việc tiếp tục tiến độ bài học vì không xác định được chính xác mình đang bị hổng kiến thức nền tảng nào và thiếu phần giải thích bổ trợ ngắn gọn ngay tại chỗ, dẫn đến việc mất nhiều thời gian tự mày mò qua các tài liệu rời rạc, cảm thấy quá tải và có nguy cơ bỏ dở buổi học.**
-
-- **Evidence ban đầu hỗ trợ giả thuyết (Observation từ Day 17):**
-  - Trong buổi phỏng vấn Day 17, bạn Linh (Marketing chuyển sang AI) chia sẻ thực tế: gặp bài khó về thuật toán/syntax thì *"không hiểu một cái gì cả"*, phải tự mày mò đọc rất nhiều tài liệu, thực hành lặp đi lặp lại và phải dùng workaround là bảo AI Agent tạo checklist phân rã từng bước để đọc hiểu code.
-  - Bạn Thương cũng xác nhận việc đọc slide bài học *"hiểu nhưng không sâu, chỉ biết thôi chứ không hiểu lắm"*, khi gặp khó khăn không biết điểm cốt lõi nằm ở đâu nếu không có người chỉ dẫn phân tách điểm A/B.
-
-- **Điều vẫn chưa được chứng minh:**
-  - Chưa chứng minh được liệu người học có thực sự muốn hệ thống tự động "chẩn đoán" bằng câu hỏi ngắn ngay trong luồng học hay không, hay họ thích tự chủ động hỏi đáp tự do (free-form chat) với AI hoặc tra cứu tài liệu theo ý mình.
-  - Chưa biết liệu một phần ôn tập bổ trợ ngắn (diagnostic refresher) có đủ để lấp lỗ hổng kiến thức nền sâu của người học non-tech hay không.
-
-### GATE 1 — Evidence Continuity Check: **ĐẠT ✅**
-
----
-
-## 4. Chặng 2 — Ba Solution Options (Tóm tắt)
-
-*Chi tiết toàn văn thiết kế và Distance check xem tại file riêng:* [`three-option-design-sheet.md`](./three-option-design-sheet.md)
-
-| Thành phần | Option A: Diagnostic Refresher (AI-Led) | Option B: Knowledge Checklist (User-Led) | Option C: A/B Contrast & Escalation (Co-create & Human) |
-|------------|----------------------------------------|------------------------------------------|---------------------------------------------------------|
-| **Cơ chế (Mechanism)** | **Chẩn đoán trắc nghiệm tự động:** AI đặt 2 câu mini-quiz để dò điểm hổng, push Refresher Card 60s. | **Cây phân rã kiến thức tự chọn:** Drawer checklist các mắt xích nền tảng; user tự tick chọn điểm mơ hồ để xem visual micro-lesson. | **Đối chiếu phản biện tư duy & Trợ giảng:** AI đưa ra 2 cách hiểu A vs B để user nhận diện ngộ nhận; nếu vẫn nghẽn thì escalate gửi Mentor. |
-| **Quyền quyết định** | **AI quyết định** (AI-Led Inference). | **User quyết định** (User-Led Self-Assessment). | **Phối hợp & Có lưới an toàn** (Co-create + Human in the loop). |
-| **Trigger** | Nút *"Tôi vẫn chưa hiểu"* trên thanh bài học. | Tab drawer *"Mắt xích kiến thức nền"* bên cạnh màn hình. | Nút *"Đối chiếu cách hiểu"* tại bước code/bài tập bị nghẽn. |
-| **Trade-off** | Nhanh, tự động; nhưng áp lực bị kiểm tra. | Tự do, không áp đặt; nhưng cần năng lực tự nhận thức (metacognition). | Trị đúng ngộ nhận tư duy; nhưng tốn chi phí vận hành trợ giảng. |
-
-### GATE 2 — Meaningful Options Check: **ĐẠT ✅**
-
----
-
-## 5. Chặng 3 — Human–AI Design Pass (Tóm tắt)
-
-*Chi tiết 4 quyết định thiết kế và phân tích rủi ro xem tại file riêng:* [`three-option-design-sheet.md`](./three-option-design-sheet.md)
-
-### Human–AI Decision Table
-
-| Human–AI Decision | Option A: Diagnostic Refresher (AI-Led) | Option B: Knowledge Checklist (User-Led) | Option C: A/B Contrast & Escalation (Co-create & Human) |
+| Option | Cơ chế thiết kế | Phân vai và đánh đổi | Link prototype |
 |---|---|---|---|
-| **User làm gì? AI làm gì?** | User trả lời mini-quiz & đọc refresher; AI tạo câu hỏi, chẩn đoán điểm hổng và sinh refresher tương ứng. | User tự duyệt checklist & chọn mắt xích chưa hiểu; AI phân rã bài học thành checklist & hiển thị visual micro-lesson. | User chọn hướng tư duy A/B & quyết định escalate; AI tạo kịch bản tương phản & soạn context brief gửi Mentor. |
-| **AI Act / Ask / Don't Act? Vì sao?** | **Ask:** AI hỏi bằng quiz trước khi can thiệp, vì tự tiện push bài học mới sẽ làm ngắt mạch tư duy của học viên. | **Don't Act:** AI thụ động chờ user mở drawer và click chọn, đảm bảo người học nắm quyền kiểm soát 100%. | **Ask:** AI hỏi user chọn A hay B, và hỏi xác nhận trước khi chuyển tiếp dữ liệu cho Trợ giảng con người. |
-| **User hiểu capability / limit bằng gì?** | Micro-copy tại nút trigger nói rõ mục đích làm quiz 60s; ghi rõ phạm vi chẩn đoán chỉ giới hạn trong bài học hiện tại. | Nhãn tab ghi rõ danh mục kiến thức nền có sẵn; thông báo micro-lesson chỉ giải thích lý thuyết, không làm hộ bài tập. | Mô tả rõ cơ chế đối chiếu tư duy; thông báo khung giờ trực ban và thời gian phản hồi dự kiến của Trợ giảng. |
-| **Evidence / uncertainty được thể hiện thế nào?** | Dẫn chứng từ câu trả lời quiz vừa làm; nếu không chắc chắn, AI hiển thị cả 2 concept liên đới thay vì đoán mò. | Dẫn link bài học gốc trong giáo trình; hiển thị cây mắt xích minh bạch, không dùng suy luận ngầm. | Dẫn chứng số liệu nhầm lẫn phổ biến từ học viên trước; nếu không chắc lỗi code, AI mở ngay nút kết nối Trợ giảng. |
-| **User kiểm soát và recovery thế nào?** | Nút *"Bỏ qua chẩn đoán"* và *"Đây không phải phần tôi cần"*; đóng overlay để quay lại đúng vị trí bài học ban đầu. | Nút đóng drawer `[X]`; bỏ tick chọn; nút mở rộng giáo trình gốc; không ảnh hưởng màn hình làm bài chính. | Preview nội dung ticket trước khi gửi; nút hủy gửi; đường thoát chắc chắn thông qua Trợ giảng con người. |
+| **A — Diagnostic Refresher (AI-Led)** | Quiz ngắn xác định điểm cần ôn, sau đó cung cấp Refresher Card | Người học trả lời; AI đề xuất nội dung. Có cơ hội kiểm chứng nhưng có thể gây áp lực/chẩn đoán sai | [Trải nghiệm A](prototypes/index.html#/option-a) |
+| **B — Knowledge Checklist (User-Led)** | Checklist kiến thức nền để tự chọn concept và đọc micro-lesson | Người học chọn điểm chưa rõ; hệ thống cung cấp giải thích. Tự chủ nhưng cần tự đánh giá | [Trải nghiệm B](prototypes/index.html#/option-b) |
+| **C — Contrast & Escalation (Co-create & Human)** | Đối chiếu hai cách hiểu và yêu cầu trợ giảng khi vẫn vướng | Người học chọn quan điểm, duyệt/hủy yêu cầu. Có đường hỗ trợ con người nhưng cần kiểm chứng vận hành | [Trải nghiệm C](prototypes/index.html#/option-c) |
 
-### Feedback & Data Check
-* **Phản hồi:** Đánh giá của user chỉ ảnh hưởng tới độ chi tiết trong phiên học hiện tại; không làm thay đổi giáo trình chung.
-* **Quyền riêng tư:** Hệ thống chỉ đọc ngữ cảnh bài học hiện tại; học viên có quyền tắt trợ lý AI (opt-out) trong Cài đặt cá nhân.
+Các link trên trỏ tới bản build trong repository, cần được phục vụ qua HTTP để trải nghiệm. **URL host công khai chưa được ghi trong hồ sơ.** B1 không thay B trong bộ kiểm thử A/B/C.
 
-### GATE 3 — Human Control Check: **ĐẠT ✅**
-- [x] Mỗi option phân định rạch ròi vai trò của User và AI.
-- [x] Agency phù hợp: Dùng **Ask** hoặc **Don't Act** tại critical moments; không tự tiện can thiệp thô bạo làm gián đoạn bài làm.
-- [x] Luôn có đường thoát (exit path) và phục hồi (recovery) nhanh chóng, an toàn.
+Chi tiết comparison contract, distance check và Human–AI Decision Table: [three-option-design-sheet.md](three-option-design-sheet.md). Kịch bản và annotations: [prototype-link.md](prototype-link.md).
 
+**Giới hạn triển khai:** Mô tả thiết kế không tự chứng minh web đã triển khai đủ. Lần rà soát mã nguồn ghi nhận quiz A hiện khác mô tả hai câu/60 giây, callback hỗ trợ video B/C chưa được dùng và C chọn sẵn đáp án. Các sửa web đã được hoàn lại theo yêu cầu; cần kiểm tra giao diện thực tế trước khi xác nhận Gate 3/4.
+
+## 4. Đóng góp cụ thể của tôi trong sản phẩm nhóm
+
+| Hạng mục | Đóng góp/trách nhiệm cá nhân và minh chứng |
+|---|---|
+| **Option chịu trách nhiệm chính** | Tổng hợp evidence và khóa giải thiết vấn đề, đưa ra 3 solution option đối lập, Option A — Diagnostic Refresher (AI-Led) |
+| **Evidence và bối cảnh chung** | Practice Note Day17 của tôi phỏng vấn Linh cung cấp workaround checklist và rào cản người học Marketing. Fixture nhóm thống nhất là Bài 4 RAG; cần bổ sung phần tôi trực tiếp tham gia chốt fixture |
+| **Human–AI Decision Table** | Phần phụ trách A gồm kỳ vọng quiz, phân vai người/AI, căn cứ từ câu trả lời và quyền từ chối/quay lại. Cần xác nhận các quyết định tôi trực tiếp viết/sửa và minh chứng |
+| **Kiểm thử cá nhân** | Phiên 3 do tôi điều phối, tester Trí; [phiếu cá nhân](prototype-feedback-note.md) đã tổng hợp phản hồi từ bảng nhóm |
+| **Hỗ trợ đồng đội** | Cần bổ sung công việc thực tế như kiểm tra chéo B/C, thống nhất dữ liệu hoặc góp ý recovery; hiện chưa có minh chứng cụ thể |
+| **Hoàn thiện hồ sơ** | Yêu cầu AI rà soát rubric, bổ sung kịch bản/phiếu, chuẩn hóa README và AI log; đính chính vai người phỏng vấn/tester và giới hạn phạm vi chỉnh sửa |
+
+
+## 5. Dữ liệu kiểm thử & Bài học
+
+### Phiên tôi dẫn dắt
+
+Theo cột Phiên 3 trong bảng nhóm, tester Trí chọn **A > B > C**, đánh giá quiz là công cụ kiểm chứng và cảm thấy tự tin hơn về việc hiểu Cosine. Phiếu hiện ghi **Lê Minh Trí**, phù hợp tên trong bảng tổng hợp; trước đó cuộc trao đổi dùng Lê Minh Trí, cần xác nhận tên cuối cùng từ ghi chép thực tế.
+
+Nguồn chưa ghi First Action, điểm do dự, thao tác đọc nguồn/recovery riêng, ngày và thứ tự thử. Không bổ sung các chi tiết này bằng suy đoán. Phiếu: [prototype-feedback-note.md](prototype-feedback-note.md).
+
+### Tổng hợp ba phiên — theo tài liệu nhóm
+
+| Người điều phối / tester | Lựa chọn | Lý do được báo cáo |
+|---|---|---|
+| Đạt / Nguyễn Hoàng Nam | B > C > A | Tự duyệt checklist, không muốn bị ép quiz |
+| Tâm / Nguyễn Thu Thảo | C > B > A | Đối chiếu giúp nhận diện nhầm lẫn; an tâm với đường trợ giảng |
+| Trân / Lê Minh Trí | A > B > C | Quiz tạo cơ hội tự kiểm chứng và cảm giác tự tin |
+
+**Pattern/đối lập:** Nguồn ghi nhu cầu hỗ trợ ngắn, căn cứ rõ và đường kiểm soát. Quiz tạo sự an tâm cho Trí nhưng áp lực với Nam/Thảo. Đây là điểm cần hiểu nguyên nhân, không chỉ đếm phiếu chọn option.
+
+Bản đầy đủ: [group-feedback-synthesis.md](group-feedback-synthesis.md). Cần link hai Feedback Notes của đồng đội và ghi chép gốc để kiểm chứng các nhận định chung; chưa xác nhận Gate 5 chỉ từ bảng tổng hợp.
+
+### Next Change của nhóm
+
+**Quyết định được ghi trong nguồn:** Tạo luồng kết hợp bắt đầu bằng checklist B; khi chọn concept, bổ sung đối chiếu cách hiểu từ C và đường yêu cầu trợ giảng nếu vẫn chưa hiểu. Đây là một hướng thay đổi luồng hỗ trợ của nhóm; nên xác định phạm vi nhỏ nhất và hành vi cần kiểm tra vòng sau. Đề xuất riêng trong phiếu cá nhân không thay thế quyết định này.
+
+### Still Unproven
+
+- Cảm giác hiểu/tự tin chưa chứng minh khả năng giải tình huống VectorStore mới hoặc ghi nhớ dài hạn.
+- Chưa có số đo riêng xác nhận hoàn thành dưới ba phút.
+- Luồng trợ giảng mẫu chưa chứng minh thời gian đáp ứng và chi phí vận hành thật.
+
+## 6. AI Support Log
+
+**Công cụ được ghi trong nhật ký:** Codex và Claude.
+
+**AI hỗ trợ hiệu quả:** Đọc và đối chiếu rubric, rà soát evidence/mã nguồn, chuẩn bị task và câu hỏi kiểm thử, biên soạn phiếu từ nguồn nhóm, định dạng tài liệu.
+
+**Tôi đã phản biện/can thiệp:** Đính chính Trí là tester và tôi là người phỏng vấn; yêu cầu hoàn lại thay đổi web không phù hợp; giới hạn chỉ bổ sung các file hiện có; yêu cầu giữ cấu trúc AI log và README theo mẫu. Chưa có thông tin để ghi tôi tự tay sửa code hoặc xác nhận mọi chức năng đã chạy đúng.
+
+**Kiểm soát kết luận:** Không tạo quote/thao tác giả; tách fact, diễn giải và quyết định; giữ Still Unproven; chưa dùng ba lựa chọn để khẳng định giảm drop-out.
+
+Nhật ký ba phần đầy đủ: [ai-support-log.md](ai-support-log.md).
